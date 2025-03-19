@@ -12,19 +12,24 @@ const allTitle = function () {
     .then((books) => {
       console.log(books)
 
-      const titoli1 = books[1].title
-      console.log(titoli1)
-      const immagine = books[1].img
-      console.log(immagine)
-      const prezzo1 = books[1].price
-      console.log(prezzo1)
+      const bookCardsContainer = document.getElementById("book-cards")
 
-      const img = document.getElementById("img")
-      const titoli = document.getElementById("titolo")
-      const prezzo = document.getElementById("prezzo")
-      img.src = immagine
-      titoli.innerText = titoli1
-      prezzo.innerText = prezzo1
+      books.forEach((book) => {
+        const card = document.createElement("div")
+        card.classList.add("col-12", "col-sm-6", "col-md-3")
+
+        card.innerHTML = `
+  <div class="card" ">
+    <img src="${book.img}" class="card-img-top" alt="${book.title}" />
+    <div class="card-body">
+      <h5 class="card-title">${book.title}</h5>
+      <p class="card-text">${book.price}</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+`
+        bookCardsContainer.appendChild(card)
+      })
     })
     .catch((err) => {
       console.log("si è verificato un errore", err)
