@@ -12,8 +12,22 @@ const allTitle = function () {
     .then((books) => {
       console.log(books)
 
-      const titoli = books.books.title
-      console.log(titoli)
+      const titoli1 = books[1].title
+      console.log(titoli1)
+      const immagine = books[1].img
+      console.log(immagine)
+      const prezzo1 = books[1].price
+      console.log(prezzo1)
+
+      const img = document.getElementById("img")
+      const titoli = document.getElementById("titolo")
+      const prezzo = document.getElementById("prezzo")
+      img.src = immagine
+      titoli.innerText = titoli1
+      prezzo.innerText = prezzo1
+    })
+    .catch((err) => {
+      console.log("si è verificato un errore", err)
     })
 }
 
